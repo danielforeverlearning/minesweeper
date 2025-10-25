@@ -15,7 +15,7 @@ const PORT         = process.env.PORT || 666;
 express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', async (req, res) => { res.render("game_board")})
+  .get('/', async (req, res) => { res.render("game_board", { rows:20, cols:20 }) })
   .post('/mypost', async (req, res) => {
 	
 /*****
