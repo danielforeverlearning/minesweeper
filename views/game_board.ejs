@@ -15,17 +15,22 @@ p {
   font-family: verdana;
   font-size: 20px;
 }
+
+.game_button {
+  background-color: lightred;
+}
 </style>
 </head>
 <body>
 
 <h1>Minesweeper</h1>
-<p>This is a paragraph.</p>
 
 <% for (let rr = 0; rr < rows; rr++) { %>
+       <span>
 <%     for (let cc = 0; cc < cols; cc++) { %>
-            <input type="button" id=button_<%= rr %>_<%= cc %>  class="game_button"  >
+            <input type="button" id=button_<%= rr %>_<%= cc %>  class="game_button">
 <%     }  %>
+       </span>
        <br/>
 <% } %>
 
