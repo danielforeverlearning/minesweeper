@@ -104,7 +104,8 @@ express()
               res.send("route post game_click form.parse ERROR = " + err);
               return;
           }
-          const keys = Object.keys(fields);
+          const keys_obj = Object.keys(fields);
+		  const keys = JSON.stringify(keys_obj);
 		  console.log("keys = " + keys);
 		  console.log("typeof keys = " + typeof keys);
 		  const splitarray = keys.split("_");
