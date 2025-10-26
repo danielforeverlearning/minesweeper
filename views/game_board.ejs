@@ -11,10 +11,12 @@
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
-       <%          if (opened[rr][cc]) { %>
+       <%          if (map_status[rr][cc]==="open") { %>
                         <input type="button" class="opened" value=<%= map[rr][cc] %>>
-       <%          } else { %>
+       <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="button" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
+       <%          } else { %>
+                        <input type="button" class="flagged" value="">
        <%          }  %>
        <%     }  %>
               </span>
@@ -27,10 +29,12 @@
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
-       <%          if (opened[rr][cc]) { %>
+       <%          if (map_status[rr][cc]==="open") { %>
                         <input type="button" class="opened" value=<%= map[rr][cc] %>>
-       <%          } else { %>
+       <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
+       <%          } else { %>
+                        <input type="button" class="flagged" value="">
        <%          }  %>
        <%     }  %>
               </span>
