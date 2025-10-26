@@ -11,11 +11,19 @@ const path         = require('path');
 const formidable   = require('formidable');
 const PORT         = process.env.PORT || 666;
 
+int rows = 20;
+int cols = 20;
+int total_cells = rows * cols;
+int total_mines = total_cells * 0.4;
+
 
 express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', async (req, res) => { res.render("game_board", { rows:20, cols:20 }) })
+  .get('/', async (req, res) => { 
+	  
+	  res.render("game_board", { rows:rows, cols:cols }); 
+  })
   .post('/mypost', async (req, res) => {
 	
 /*****
