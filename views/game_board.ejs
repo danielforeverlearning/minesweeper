@@ -8,6 +8,9 @@
 <h1>Minesweeper</h1>
 <% if (lastrow != -1 && lastcol != -1 && map[lastrow][lastcol]==="M" && clicktype==="Dig") { %>
        <p>BOOM!.....YOU LOSE :(</p>
+       <form action="/new_game" method="post" enctype="multipart/form-data">
+       <input type="submit" value="NEW GAME">
+       </form>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
@@ -24,6 +27,9 @@
        <% } %>
 <% } else if (lastrow != -1 && lastcol != -1 && opened_flagged_count==total_cells) { %>
        <p>YAY!.....YOU WIN :)</p>
+       <form action="/new_game" method="post" enctype="multipart/form-data">
+       <input type="submit" value="NEW GAME">
+       </form>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
