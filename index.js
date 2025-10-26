@@ -21,6 +21,7 @@ const map = [];
 
 function MapAnotherPass(temp)
 {
+	const randomBuffer = new Uint32Array(1);
 	var mine_count = temp;
 	for (let rr = 0; rr < rows; rr++)
 	{
