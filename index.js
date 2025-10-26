@@ -260,7 +260,12 @@ express()
 		  //console.log("splitarray[2] = " + splitarray[2]);
 
 		  if (clicktype==="Flag")
-			  map_status[splitarray[1]][splitarray[2]] = "flagged";
+		  {
+			  if (map_status[splitarray[1]][splitarray[2]] === "flagged")
+				  map_status[splitarray[1]][splitarray[2]] = "closed";
+			  else
+				  map_status[splitarray[1]][splitarray[2]] = "flagged";
+		  }
 		  else
 			  map_status[splitarray[1]][splitarray[2]] = "open";
 		  
