@@ -25,61 +25,61 @@ function PutNumber(rr,cc)
 	var mine_count=0;
 	if (rr==0 && cc==0)
 	{
-		if (map[0][1]=="M")
+		if (map[0][1]==="M")
 			mine_count++;
-		if (map[1][1]=="M")
+		if (map[1][1]==="M")
 			mine_count++;
-		if (map[1][0]=="M")
+		if (map[1][0]==="M")
 			mine_count++;
 		return mine_count.toString();
 	}
 	else if (rr==0 && cc==(cols-1))
 	{
-		if (map[0][cols-2]=="M")
+		if (map[0][cols-2]==="M")
 			mine_count++;
-		if (map[1][cols-2]=="M")
+		if (map[1][cols-2]==="M")
 			mine_count++;
-		if (map[1][cols-1]=="M")
+		if (map[1][cols-1]==="M")
 			mine_count++;
 		return mine_count.toString();
 	}
 	else if (rr==(rows-1) && cc==(cols-1))
 	{
-		if (map[rows-2][cols-1]=="M")
+		if (map[rows-2][cols-1]==="M")
 			mine_count++;
-		if (map[rows-2][cols-2]=="M")
+		if (map[rows-2][cols-2]==="M")
 			mine_count++;
-		if (map[rows-1][cols-2]=="M")
+		if (map[rows-1][cols-2]==="M")
 			mine_count++;
 		return mine_count.toString();
 	}
 	else if (rr==(rows-1) && cc==0)
 	{
-		if (map[rows-2][0]=="M")
+		if (map[rows-2][0]==="M")
 			mine_count++;
-		if (map[rows-2][1]=="M")
+		if (map[rows-2][1]==="M")
 			mine_count++;
-		if (map[rows-1][1]=="M")
+		if (map[rows-1][1]==="M")
 			mine_count++;
 		return mine_count.toString();
 	}
 	else
 	{
-		if (map[rr-1][cc-1]=="M")
+		if (map[rr-1][cc-1]==="M")
 			mine_count++;
-		if (map[rr-1][cc]=="M")
+		if (map[rr-1][cc]==="M")
 			mine_count++;
-		if (map[rr-1][cc+1]=="M")
+		if (map[rr-1][cc+1]==="M")
 			mine_count++;
-		if (map[rr][cc+1]=="M")
+		if (map[rr][cc+1]==="M")
 			mine_count++;
-		if (map[rr+1][cc+1]=="M")
+		if (map[rr+1][cc+1]==="M")
 			mine_count++;
-		if (map[rr+1][cc]=="M")
+		if (map[rr+1][cc]==="M")
 			mine_count++;
-		if (map[rr+1][cc-1]=="M")
+		if (map[rr+1][cc-1]==="M")
 			mine_count++;
-		if (map[rr][cc-1]=="M")
+		if (map[rr][cc-1]==="M")
 			mine_count++;
 		return mine_count.toString();
 	}
