@@ -113,6 +113,8 @@ express()
 		  //console.log("splitarray[2] = " + splitarray[2]);
 		  const index = splitarray[2].indexOf('"');
 		  const open_cc = splitarray[2].substring(0, index);
+		  console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
+		  console.log("open_cc = " + open_cc + " " + typeof open_cc);
 		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:open_cc, val:"E" });
       })//form.parse
   })
