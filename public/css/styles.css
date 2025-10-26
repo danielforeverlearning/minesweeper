@@ -15,22 +15,22 @@ p {
 
 .game_button {
   background-color: blue;
-  width: 2%;
-  height: 2%;
+  width: 3%;
+  height: 3%;
 }
 
 .opened {
   background-color: white;
-  width: 2%;
-  height: 2%;
+  width: 3%;
+  height: 3%;
 }
 
 .flagged {
   background-image: url('/css/icons8-flag-filled-96.png');
   background-position:center;
   background-repeat:no-repeat;
-  width: 2%;
-  height: 2%;
+  width: 3%;
+  height: 3%;
 }
 
 
