@@ -6,7 +6,7 @@
 <body>
 
 <h1>Minesweeper</h1>
-<% if (lastrow != -1 && lastcol != -1 && map[lastrow][lastcol]==="M") { %>
+<% if (lastrow != -1 && lastcol != -1 && map[lastrow][lastcol]==="M" && clicktype==="Dig") { %>
        <p>BOOM!.....YOU LOSE :(</p>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
