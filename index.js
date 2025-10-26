@@ -19,7 +19,7 @@ const total_mines = total_cells * mine_percent;
 const mine_random_num = 4294967295 * mine_percent;
 const map = [];
 
-function MapAnotherPass(int temp)
+function MapAnotherPass(temp)
 {
 	var mine_count = temp;
 	for (let rr = 0; rr < rows; rr++)
