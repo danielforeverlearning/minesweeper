@@ -240,16 +240,29 @@ express()
               return;
           }
           const keys_obj = Object.keys(fields);
-		  const keys = JSON.stringify(keys_obj);
-		  console.log("keys = " + keys);
+		  //const keys = JSON.stringify(keys_obj);
+		  //console.log("keys = " + keys);
 		  //console.log("typeof keys = " + typeof keys);
-		  const splitarray = keys.split("_");
+		  
+		  const clicktype = fields.click_type[0];
+		  console.log("clicktype = " + clicktype);
+		  
+		  var buttonstr = "";
+		  for (ii=0; ii < keys_obj.length; ii++)
+		  {
+			  if (keys_obj[ii].startsWith("button"))
+				  buttonstr = keys_obj[ii];
+		  }
+				  
+		  const splitarray = buttonstr.split("_");
 		  //console.log("splitarray[1] = " + splitarray[1]);
 		  //console.log("splitarray[2] = " + splitarray[2]);
 		  const index = splitarray[2].indexOf('"');
 		  const open_cc = splitarray[2].substring(0, index);
-		  //console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
-		  //console.log("open_cc = " + open_cc + " " + typeof open_cc);
+		  
+		  console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
+		  console.log("open_cc = " + open_cc + " " + typeof open_cc);
+		  
 		  opened[splitarray[1]][open_cc] = true;
 		  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map, lastrow:splitarray[1], lastcol:open_cc });
       })//form.parse
