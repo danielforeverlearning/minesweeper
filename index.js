@@ -107,7 +107,7 @@ express()
           const keys = Object.keys(fields);
 		  console.log("keys = " + keys);
 		  const splitarray = keys.split("_");
-		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:splitarray[2], val:"E" }
+		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:splitarray[2], val:"E" });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
