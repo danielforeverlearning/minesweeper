@@ -104,7 +104,8 @@ express()
               res.send("route post game_click form.parse ERROR = " + err);
               return;
           }
-          console.log("fields = " + JSON.stringify(fields));
+          const keys = Object.keys(fields);
+		  console.log("keys = " + keys);
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
