@@ -14,7 +14,7 @@
        <%          if (map_status[rr][cc]==="open") { %>
                         <input type="button" class="opened" value=<%= map[rr][cc] %>>
        <%          } else if (map_status[rr][cc]==="closed") { %>
-                        <input type="button" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
+                        <input type="button" class="game_button" value="">
        <%          } else { %>
                         <input type="button" class="flagged" value="">
        <%          }  %>
@@ -34,7 +34,7 @@
        <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
        <%          } else { %>
-                        <input type="submit" class="flagged" value="">
+                        <input type="submit" name=button_<%= rr %>_<%= cc %>  class="flagged" value="">
        <%          }  %>
        <%     }  %>
               </span>
