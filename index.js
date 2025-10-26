@@ -29,7 +29,8 @@ function MapAnotherPass(temp)
 		{
 			crypto.getRandomValues(randomBuffer);
 			if ((randomBuffer[0] <= mine_random_num) &&
-				(mine_count <= total_mines))
+				(mine_count <= total_mines) &&
+			    map[rr][cc] == "E")
 			{
 				map[rr][cc] = "M";
 				mine_count++;
