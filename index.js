@@ -31,10 +31,10 @@ function MapAnotherPass(temp)
 		{
 			for (let cc = 0; cc < cols; cc++)
 			{
-				if (mine_count < total_mines) && map[rr][cc] == "E")
+				if (mine_count < total_mines && map[rr][cc] == "E")
 				{
 					crypto.getRandomValues(randomBuffer);
-					if ((randomBuffer[0] <= mine_random_num)
+					if (randomBuffer[0] <= mine_random_num)
 					{
 						map[rr][cc] = "M";
 						mine_count++;
