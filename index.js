@@ -20,6 +20,83 @@ const mine_random_num = 4294967295 * mine_percent;
 const opened = [];
 const map = [];
 
+function PutNumber(rr,cc)
+{
+	var mine_count=0;
+	if (rr==0 && cc==0)
+	{
+		if (map[0][1]=="M")
+			mine_count++;
+		if (map[1][1]=="M")
+			mine_count++;
+		if (map[1][0]=="M")
+			mine_count++;
+		return mine_count;
+	}
+	else if (rr==0 && cc==(cols-1))
+	{
+		if (map[0][cols-2]=="M")
+			mine_count++;
+		if (map[1][cols-2]=="M")
+			mine_count++;
+		if (map[1][cols-1]=="M")
+			mine_count++;
+		return mine_count;
+	}
+	else if (rr==(rows-1) && cc==(cols-1))
+	{
+		if (map[rows-2][cols-1]=="M")
+			mine_count++;
+		if (map[rows-2][cols-2]=="M")
+			mine_count++;
+		if (map[rows-1][cols-2]=="M")
+			mine_count++;
+		return mine_count;
+	}
+	else if (rr==(rows-1) && cc==0)
+	{
+		if (map[rows-2][0]=="M")
+			mine_count++;
+		if (map[rows-2][1]=="M")
+			mine_count++;
+		if (map[rows-1][1]=="M")
+			mine_count++;
+		return mine_count;
+	}
+	else
+	{
+		if (map[rr-1][cc-1]=="M")
+			mine_count++;
+		if (map[rr-1][cc]=="M")
+			mine_count++;
+		if (map[rr-1][cc+1]=="M")
+			mine_count++;
+		if (map[rr][cc+1]=="M")
+			mine_count++;
+		if (map[rr+1][cc+1]=="M")
+			mine_count++;
+		if (map[rr+1][cc]=="M")
+			mine_count++;
+		if (map[rr+1][cc-1]=="M")
+			mine_count++;
+		if (map[rr][cc-1]=="M")
+			mine_count++;
+		return mine_count;
+	}
+}//PutNumber
+
+function MapPutNumbers()
+{
+	for (let rr = 0; rr < rows; rr++)
+	{
+		for (let cc = 0; cc < cols; cc++)
+		{
+			if (map[rr][cc]=="E")
+				map[rr][cc] = PutNumber(rr,cc);
+		}
+	}
+}//MapPutNumbers
+
 function MapAnotherPass(temp)
 {
 	const randomBuffer = new Uint32Array(1);
@@ -85,6 +162,7 @@ function InitializeMap()
 	}
 	console.log("mine_count = " + mine_count);
 	MapAnotherPass(mine_count);
+	MapPutNumbers();
 }//InitializeMap
 
 
