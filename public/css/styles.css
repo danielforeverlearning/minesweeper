@@ -26,7 +26,7 @@ p {
 }
 
 .flagged {
-  background-color: black;
+  background-image: url('/css/icons8-flag-filled-96.png');;
   width: 2%;
   height: 2%;
 }
