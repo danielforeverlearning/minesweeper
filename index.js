@@ -269,7 +269,7 @@ express()
 		  else
 			  map_status[splitarray[1]][splitarray[2]] = "open";
 		  
-		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2] });
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
