@@ -31,7 +31,7 @@ function PutNumber(rr,cc)
 			mine_count++;
 		if (map[1][0]=="M")
 			mine_count++;
-		return mine_count;
+		return mine_count.toString();
 	}
 	else if (rr==0 && cc==(cols-1))
 	{
@@ -41,7 +41,7 @@ function PutNumber(rr,cc)
 			mine_count++;
 		if (map[1][cols-1]=="M")
 			mine_count++;
-		return mine_count;
+		return mine_count.toString();
 	}
 	else if (rr==(rows-1) && cc==(cols-1))
 	{
@@ -51,7 +51,7 @@ function PutNumber(rr,cc)
 			mine_count++;
 		if (map[rows-1][cols-2]=="M")
 			mine_count++;
-		return mine_count;
+		return mine_count.toString();
 	}
 	else if (rr==(rows-1) && cc==0)
 	{
@@ -61,7 +61,7 @@ function PutNumber(rr,cc)
 			mine_count++;
 		if (map[rows-1][1]=="M")
 			mine_count++;
-		return mine_count;
+		return mine_count.toString();
 	}
 	else
 	{
@@ -81,7 +81,7 @@ function PutNumber(rr,cc)
 			mine_count++;
 		if (map[rr][cc-1]=="M")
 			mine_count++;
-		return mine_count;
+		return mine_count.toString();
 	}
 }//PutNumber
 
