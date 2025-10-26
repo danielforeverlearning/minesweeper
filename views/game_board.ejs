@@ -23,7 +23,7 @@
 <% } else { %>
        <form action="/game_click" method="post" enctype="multipart/form-data">
        <input type="radio" name="click_type" value="Dig"><label>Dig</label><br>
-       <input type="radio" name="click_type" value="Flag"><label>Flag</label><br>
+       <input type="radio" name="click_type" value="Flag" checked><label>Flag</label><br>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
