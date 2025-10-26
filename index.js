@@ -255,16 +255,12 @@ express()
 		  }
 				  
 		  const splitarray = buttonstr.split("_");
-		  console.log("splitarray[1] = " + splitarray[1]);
-		  console.log("splitarray[2] = " + splitarray[2]);
-		  const index = splitarray[2].indexOf('"');
-		  const open_cc = splitarray[2].substring(0, index);
 		  
-		  console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
-		  console.log("open_cc = " + open_cc + " " + typeof open_cc);
+		  //console.log("splitarray[1] = " + splitarray[1]);
+		  //console.log("splitarray[2] = " + splitarray[2]);
 		  
-		  opened[splitarray[1]][open_cc] = true;
-		  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map, lastrow:splitarray[1], lastcol:open_cc });
+		  opened[splitarray[1]][splitarray[2]] = true;
+		  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
