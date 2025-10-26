@@ -262,9 +262,15 @@ express()
 		  if (clicktype==="Flag")
 		  {
 			  if (map_status[splitarray[1]][splitarray[2]] === "flagged")
+			  {
+				  console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to closed");
 				  map_status[splitarray[1]][splitarray[2]] = "closed";
+			  }
 			  else
+			  {
+				  console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to flagged");
 				  map_status[splitarray[1]][splitarray[2]] = "flagged";
+			  }
 		  }
 		  else
 			  map_status[splitarray[1]][splitarray[2]] = "open";
