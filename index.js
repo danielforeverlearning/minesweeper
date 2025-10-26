@@ -255,8 +255,8 @@ express()
 		  }
 				  
 		  const splitarray = buttonstr.split("_");
-		  //console.log("splitarray[1] = " + splitarray[1]);
-		  //console.log("splitarray[2] = " + splitarray[2]);
+		  console.log("splitarray[1] = " + splitarray[1]);
+		  console.log("splitarray[2] = " + splitarray[2]);
 		  const index = splitarray[2].indexOf('"');
 		  const open_cc = splitarray[2].substring(0, index);
 		  
