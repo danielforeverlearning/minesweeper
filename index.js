@@ -231,7 +231,7 @@ express()
   })
   .post('/new_game', (req, res) => {
 	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:-1, lastcol:-1, clicktype:clicktype });
+	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:-1, lastcol:-1, clicktype:"Flag" });
   }) //mypost
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
