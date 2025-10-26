@@ -282,7 +282,7 @@ express()
 			  opened_flagged_count++;
 		  }
 		  
-		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype, opened_flagged_count:opened_flagged_count, total_cells:total_cells });
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype, opened_flagged_count:opened_flagged_count, total_cells:total_cells, clicktype:clicktype });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
