@@ -10,8 +10,8 @@
 <% for (let rr = 0; rr < rows; rr++) { %>
        <span>
 <%     for (let cc = 0; cc < cols; cc++) { %>
-<%          if (open_rr == rr && open_cc == cc) { %>
-                 <input type="button" class="opened" value=<%= val %>>
+<%          if (opened[rr][cc]) { %>
+                 <input type="button" class="opened" value=<%= map[rr][cc] %>>
 <%          } else { %>
                  <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
 <%          }  %>
