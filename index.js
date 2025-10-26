@@ -19,6 +19,7 @@ const total_mines = total_cells * mine_percent;
 const mine_random_num = 4294967295 * mine_percent;
 const map_status = [];
 const map = [];
+var opened_flagged_count = 0;
 
 function PutNumber(rr,cc)
 {
@@ -193,7 +194,8 @@ function InitializeMap()
 	The maximum value for a 32-bit unsigned integer (uint32) 
 	in JavaScript is (2^{32}-1), which equals 4,294,967,295.
 	*************************************************************************************************/
-	console.log("mine_random_num = " + mine_random_num);
+	//console.log("mine_random_num = " + mine_random_num);
+	opened_flagged_count = 0;
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
 	for (let rr = 0; rr < rows; rr++)
@@ -263,19 +265,24 @@ express()
 		  {
 			  if (map_status[splitarray[1]][splitarray[2]] === "flagged")
 			  {
-				  console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to closed");
+				  //console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to closed");
 				  map_status[splitarray[1]][splitarray[2]] = "closed";
+				  opened_flagged_count--;
 			  }
 			  else
 			  {
-				  console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to flagged");
+				  //console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to flagged");
 				  map_status[splitarray[1]][splitarray[2]] = "flagged";
+				  opened_flagged_count++;
 			  }
 		  }
 		  else
+		  {
 			  map_status[splitarray[1]][splitarray[2]] = "open";
+			  opened_flagged_count++;
+		  }
 		  
-		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype });
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype, opened_flagged_count:opened_flagged_count });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
