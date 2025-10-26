@@ -241,7 +241,7 @@ express()
           }
           const keys_obj = Object.keys(fields);
 		  const keys = JSON.stringify(keys_obj);
-		  //console.log("keys = " + keys);
+		  console.log("keys = " + keys);
 		  //console.log("typeof keys = " + typeof keys);
 		  const splitarray = keys.split("_");
 		  //console.log("splitarray[1] = " + splitarray[1]);
