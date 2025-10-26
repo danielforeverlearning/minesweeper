@@ -23,24 +23,29 @@ function MapAnotherPass(temp)
 {
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = temp;
-	for (let rr = 0; rr < rows; rr++)
+	var pass=1;
+
+	while (mine_count <= total_mines)
 	{
-		for (let cc = 0; cc < cols; cc++)
+		for (let rr = 0; rr < rows; rr++)
 		{
-			crypto.getRandomValues(randomBuffer);
-			if ((randomBuffer[0] <= mine_random_num) &&
-				(mine_count <= total_mines) &&
-			    map[rr][cc] == "E")
+			for (let cc = 0; cc < cols; cc++)
 			{
-				map[rr][cc] = "M";
-				mine_count++;
+				crypto.getRandomValues(randomBuffer);
+				if ((randomBuffer[0] <= mine_random_num) &&
+					(mine_count <= total_mines) &&
+				    map[rr][cc] == "E")
+				{
+					map[rr][cc] = "M";
+					mine_count++;
+				}
+				else
+					map[rr][cc] = "E";
 			}
-			else
-				map[rr][cc] = "E";
 		}
+		console.log("MapAnotherPass " + pass + ": mine_count = " + mine_count);
+		pass++;
 	}
-	console.log("MapAnotherPass: mine_count = " + mine_count);
-	
 }//MapAnotherPass
 
 function InitializeMap()
