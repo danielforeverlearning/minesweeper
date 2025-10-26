@@ -17,6 +17,7 @@ const total_cells = rows * cols;
 const mine_percent = 0.4;
 const total_mines = total_cells * mine_percent;
 const mine_random_num = 4294967295 * mine_percent;
+const opened = [];
 const map = [];
 
 function MapAnotherPass(temp)
@@ -67,8 +68,10 @@ function InitializeMap()
 	for (let rr = 0; rr < rows; rr++)
 	{
 		map[rr] = [];
+		opened[rr] = [];
 		for (let cc = 0; cc < cols; cc++)
 		{
+			opened[rr][cc] = false;
 			crypto.getRandomValues(randomBuffer);
 			if ((randomBuffer[0] <= mine_random_num) &&
 				(mine_count <= total_mines))
@@ -94,7 +97,7 @@ express()
   })
   .post('/new_game', (req, res) => {
 	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols, open_rr:-1, open_cc:-1 });   
+	  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map });   
   }) //mypost
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
@@ -113,9 +116,10 @@ express()
 		  //console.log("splitarray[2] = " + splitarray[2]);
 		  const index = splitarray[2].indexOf('"');
 		  const open_cc = splitarray[2].substring(0, index);
-		  console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
-		  console.log("open_cc = " + open_cc + " " + typeof open_cc);
-		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:open_cc, val:"E" });
+		  //console.log("splitarray[1] = " + splitarray[1] + " " + typeof splitarray[1]);
+		  //console.log("open_cc = " + open_cc + " " + typeof open_cc);
+		  opened[splitarray[1]][open_cc] = true;
+		  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
