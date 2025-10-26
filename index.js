@@ -17,7 +17,7 @@ const total_cells = rows * cols;
 const mine_percent = 0.4;
 const total_mines = total_cells * mine_percent;
 const mine_random_num = 4294967295 * mine_percent;
-const opened = [];
+const map_status = [];
 const map = [];
 
 function PutNumber(rr,cc)
@@ -199,10 +199,10 @@ function InitializeMap()
 	for (let rr = 0; rr < rows; rr++)
 	{
 		map[rr] = [];
-		opened[rr] = [];
+		map_status[rr] = [];
 		for (let cc = 0; cc < cols; cc++)
 		{
-			opened[rr][cc] = false;
+			map_status[rr][cc] = "closed";
 			crypto.getRandomValues(randomBuffer);
 			if ((randomBuffer[0] <= mine_random_num) &&
 				(mine_count < total_mines))
@@ -229,7 +229,7 @@ express()
   })
   .post('/new_game', (req, res) => {
 	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map, lastrow:-1, lastcol:-1 });   
+	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:-1, lastcol:-1 });
   }) //mypost
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
@@ -258,9 +258,13 @@ express()
 		  
 		  //console.log("splitarray[1] = " + splitarray[1]);
 		  //console.log("splitarray[2] = " + splitarray[2]);
+
+		  if (clicktype==="Flag")
+			  map_status[splitarray[1]][splitarray[2]] = "flagged";
+		  else
+			  map_status[splitarray[1]][splitarray[2]] = "open";
 		  
-		  opened[splitarray[1]][splitarray[2]] = true;
-		  res.render("game_board", { rows:rows, cols:cols, opened:opened, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype });
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2] });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
