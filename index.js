@@ -19,6 +19,28 @@ const total_mines = total_cells * mine_percent;
 const mine_random_num = 4294967295 * mine_percent;
 const map = [];
 
+function MapAnotherPass(int temp)
+{
+	var mine_count = temp;
+	for (let rr = 0; rr < rows; rr++)
+	{
+		for (let cc = 0; cc < cols; cc++)
+		{
+			crypto.getRandomValues(randomBuffer);
+			if ((randomBuffer[0] <= mine_random_num) &&
+				(mine_count <= total_mines))
+			{
+				map[rr][cc] = "M";
+				mine_count++;
+			}
+			else
+				map[rr][cc] = "E";
+		}
+	}
+	console.log("MapAnotherPass: mine_count = " + mine_count);
+	
+}//MapAnotherPass
+
 function InitializeMap()
 {
 	/**************************************************************************************************
@@ -51,6 +73,7 @@ function InitializeMap()
 		}
 	}
 	console.log("mine_count = " + mine_count);
+	MapAnotherPass(mine_count);
 }//InitializeMap
 
 
