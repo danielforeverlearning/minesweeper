@@ -6,20 +6,36 @@
 <body>
 
 <h1>Minesweeper</h1>
-<form action="/game_click" method="post" enctype="multipart/form-data">
-<% for (let rr = 0; rr < rows; rr++) { %>
-       <span>
-<%     for (let cc = 0; cc < cols; cc++) { %>
-<%          if (opened[rr][cc]) { %>
-                 <input type="button" class="opened" value=<%= map[rr][cc] %>>
-<%          } else { %>
-                 <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
-<%          }  %>
-<%     }  %>
-       </span>
-       <br/>
+<% if (lastrow != -1 && lastcol != -1 && map[lastrow][lastcol]==="M") { %>
+       <p>BOOM!.....YOU LOSE :(</p>
+       <% for (let rr = 0; rr < rows; rr++) { %>
+              <span>
+       <%     for (let cc = 0; cc < cols; cc++) { %>
+       <%          if (opened[rr][cc]) { %>
+                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%          } else { %>
+                        <input type="button" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
+       <%          }  %>
+       <%     }  %>
+              </span>
+              <br/>
+       <% } %>
+<% } else { %>
+       <form action="/game_click" method="post" enctype="multipart/form-data">
+       <% for (let rr = 0; rr < rows; rr++) { %>
+              <span>
+       <%     for (let cc = 0; cc < cols; cc++) { %>
+       <%          if (opened[rr][cc]) { %>
+                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%          } else { %>
+                        <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
+       <%          }  %>
+       <%     }  %>
+              </span>
+              <br/>
+       <% } %>
+       </form>
 <% } %>
-</form>
 </body>
 </html>
 
