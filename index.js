@@ -25,19 +25,20 @@ function MapAnotherPass(temp)
 	var mine_count = temp;
 	var pass=1;
 
-	while (mine_count <= total_mines)
+	while (mine_count < total_mines)
 	{
 		for (let rr = 0; rr < rows; rr++)
 		{
 			for (let cc = 0; cc < cols; cc++)
 			{
-				crypto.getRandomValues(randomBuffer);
-				if ((randomBuffer[0] <= mine_random_num) &&
-					(mine_count <= total_mines) &&
-				    map[rr][cc] == "E")
+				if (mine_count < total_mines) && map[rr][cc] == "E")
 				{
-					map[rr][cc] = "M";
-					mine_count++;
+					crypto.getRandomValues(randomBuffer);
+					if ((randomBuffer[0] <= mine_random_num)
+					{
+						map[rr][cc] = "M";
+						mine_count++;
+					}
 				}
 				else
 					map[rr][cc] = "E";
