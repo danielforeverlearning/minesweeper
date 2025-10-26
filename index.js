@@ -147,7 +147,7 @@ function MapPutNumbers()
 	{
 		for (let cc = 0; cc < cols; cc++)
 		{
-			if (map[rr][cc]=="E")
+			if (map[rr][cc]==="E")
 				map[rr][cc] = PutNumber(rr,cc);
 		}
 	}
