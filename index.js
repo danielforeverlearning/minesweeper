@@ -11,10 +11,10 @@ const path         = require('path');
 const formidable   = require('formidable');
 const PORT         = process.env.PORT || 666;
 
-int rows = 20;
-int cols = 20;
-int total_cells = rows * cols;
-int total_mines = total_cells * 0.4;
+const rows = 20;
+const cols = 20;
+const total_cells = rows * cols;
+const total_mines = total_cells * 0.4;
 
 
 express()
