@@ -29,6 +29,7 @@ p {
   background-image: url('/css/icons8-flag-filled-96.png');
   background-position:center;
   background-repeat:no-repeat;
+  background-size: contain;
   width: 3%;
   height: 3%;
 }
