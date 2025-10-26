@@ -109,6 +109,8 @@ express()
 		  console.log("keys = " + keys);
 		  console.log("typeof keys = " + typeof keys);
 		  const splitarray = keys.split("_");
+		  console.log("splitarray[1] = " + splitarray[1]);
+		  console.log("splitarray[2] = " + splitarray[2]);
 		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:splitarray[2], val:"E" });
       })//form.parse
   })
