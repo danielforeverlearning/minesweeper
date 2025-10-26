@@ -94,7 +94,7 @@ express()
   })
   .post('/new_game', (req, res) => {
 	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols, rr:-1, cc:-1 });   
+	  res.render("game_board", { rows:rows, cols:cols, open_rr:-1, open_cc:-1 });   
   }) //mypost
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
@@ -107,7 +107,7 @@ express()
           const keys = Object.keys(fields);
 		  console.log("keys = " + keys);
 		  const splitarray = keys.split("_");
-		  res.render("game_board", { rows:rows, cols:cols, rr:splitarray[1], cc:splitarray[2], val:"E" }
+		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:splitarray[2], val:"E" }
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
