@@ -6,16 +6,16 @@
 <body>
 
 <h1>Minesweeper</h1>
-
+<form action="/game_click" method="post" enctype="multipart/form-data">
 <% for (let rr = 0; rr < rows; rr++) { %>
        <span>
 <%     for (let cc = 0; cc < cols; cc++) { %>
-            <input type="button" id=button_<%= rr %>_<%= cc %>  class="game_button">
+            <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button">
 <%     }  %>
        </span>
        <br/>
 <% } %>
-
+</form>
 </body>
 </html>
 
