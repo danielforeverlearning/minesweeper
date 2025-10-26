@@ -89,14 +89,12 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', async (req, res) => { 
-	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols }); 
+  .get('/', (req, res) => {
+	  res.render("home");  
   })
-  .post('/mypost', async (req, res) => {
-	
-/*****
-      var form = new formidable.IncomingForm();
+  .post('/new_game', async (req, res) => {
+	  /*****
+	  var form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
           if (err)
           {
@@ -107,6 +105,7 @@ express()
 		  mycalculate();
       })//form.parse
 	  ********/
-	  
+	  InitializeMap();
+	  res.render("game_board", { rows:rows, cols:cols });   
   }) //mypost
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
