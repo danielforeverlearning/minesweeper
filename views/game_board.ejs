@@ -11,7 +11,7 @@
        <span>
 <%     for (let cc = 0; cc < cols; cc++) { %>
 <%          if (open_rr == rr && open_cc == cc) { %>
-                 <input type="button" class="opened">
+                 <input type="button" class="opened" value=<%= val %>>
 <%          } else { %>
                  <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
 <%          }  %>
