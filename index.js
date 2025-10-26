@@ -92,20 +92,18 @@ express()
   .get('/', (req, res) => {
 	  res.render("home");  
   })
-  .post('/new_game', async (req, res) => {
-	  /*****
+  .post('/new_game', (req, res) => {
+	  InitializeMap();
+	  res.render("game_board", { rows:rows, cols:cols });   
+  }) //mypost
+  .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
           if (err)
           {
-              res.send("route post mypost form.parse ERROR = " + err);
+              res.send("route post game_click form.parse ERROR = " + err);
               return;
           }
-          key = fields.key_name[0];
-		  mycalculate();
+          console.log("fields = " + JSON.stringify(fields));
       })//form.parse
-	  ********/
-	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols });   
-  }) //mypost
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
