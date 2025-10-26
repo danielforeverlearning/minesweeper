@@ -106,12 +106,14 @@ express()
           }
           const keys_obj = Object.keys(fields);
 		  const keys = JSON.stringify(keys_obj);
-		  console.log("keys = " + keys);
-		  console.log("typeof keys = " + typeof keys);
+		  //console.log("keys = " + keys);
+		  //console.log("typeof keys = " + typeof keys);
 		  const splitarray = keys.split("_");
-		  console.log("splitarray[1] = " + splitarray[1]);
-		  console.log("splitarray[2] = " + splitarray[2]);
-		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:splitarray[2], val:"E" });
+		  //console.log("splitarray[1] = " + splitarray[1]);
+		  //console.log("splitarray[2] = " + splitarray[2]);
+		  const index = splitarray[2].indexOf('"');
+		  const open_cc = splitarray[2].substring(0, index);
+		  res.render("game_board", { rows:rows, cols:cols, open_rr:splitarray[1], open_cc:open_cc, val:"E" });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
