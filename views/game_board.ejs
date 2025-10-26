@@ -22,6 +22,22 @@
               </span>
               <br/>
        <% } %>
+<% else if (lastrow != -1 && lastcol != -1 && opened_flagged_count==total_cells) { %>
+       <p>YAY!.....YOU WIN :)</p>
+       <% for (let rr = 0; rr < rows; rr++) { %>
+              <span>
+       <%     for (let cc = 0; cc < cols; cc++) { %>
+       <%          if (map_status[rr][cc]==="open") { %>
+                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%          } else if (map_status[rr][cc]==="closed") { %>
+                        <input type="button" class="game_button" value="">
+       <%          } else { %>
+                        <input type="button" class="flagged" value="">
+       <%          }  %>
+       <%     }  %>
+              </span>
+              <br/>
+       <% } %>
 <% } else { %>
        <form action="/game_click" method="post" enctype="multipart/form-data">
        <input type="radio" name="click_type" value="Dig"><label>Dig</label><br>
