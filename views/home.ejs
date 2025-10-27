@@ -5,7 +5,9 @@
 </head>
 <body>
 <h1>Minesweeper</h1>
-<input type="button" onclick="window.location.href='/new_game_easy'" value="NEW GAME - EASY">
-<input type="button" onclick="window.location.href='/new_game_hard'" value="NEW GAME - HARD">
+<form action="/new_game" method="post" enctype="multipart/form-data">
+  <input type="range" name="mine_percentage" min="10" max="40" value="25">
+  <input type="submit" value="NEW GAME">
+</form>
 </body>
 </html>
