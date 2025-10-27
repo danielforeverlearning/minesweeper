@@ -223,6 +223,7 @@ function InitializeMap(mine_percent)
 	else
 		console.log("InitializeMap mine_count = " + mine_count);
 	MapPutNumbers();
+	**********************/
 }//InitializeMap
 
 
