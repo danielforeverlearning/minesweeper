@@ -56,10 +56,10 @@
        <form action="/game_click" method="post" enctype="multipart/form-data">
 <% if (clicktype==="Dig") { %>
        <input type="radio" name="click_type" value="Dig"  checked><label class="shovel"></label><br>
-       <input type="radio" name="click_type" value="Flag"><label>Flag</label><br>
+       <input type="radio" name="click_type" value="Flag"><label class="flagged">Flag</label><br>
 <% } else { %>
-       <input type="radio" name="click_type" value="Dig"><label>Dig</label><br>
-       <input type="radio" name="click_type" value="Flag" checked><label>Flag</label><br>
+       <input type="radio" name="click_type" value="Dig"><label class="shovel"></label><br>
+       <input type="radio" name="click_type" value="Flag" checked><label class="flagged">Flag</label><br>
 <% } %>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
