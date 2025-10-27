@@ -8,11 +8,8 @@
 <h1>Minesweeper</h1>
 <% if (endgame==="LOSE") { %>
        <p>BOOM!.....YOU LOSE :(</p>
-       <form action="/new_game" method="post" enctype="multipart/form-data">
-       <input type="radio" name="gametype" value="EASY"  checked><label>EASY</label><br>
-       <input type="radio" name="gametype" value="HARD"><label>HARD</label><br>
-       <input type="submit" value="NEW GAME">
-       </form>
+       <input type="button" onclick="window.location.href='/new_game_easy'" value="NEW GAME - EASY">
+       <input type="button" onclick="window.location.href='/new_game_hard'" value="NEW GAME - HARD">
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
@@ -33,11 +30,8 @@
        <% } %>
 <% } else if (endgame==="WIN") { %>
        <p>YAY!.....YOU WIN :)</p>
-       <form action="/new_game" method="post" enctype="multipart/form-data">
-       <input type="radio" name="gametype" value="EASY"  checked><label>EASY</label><br>
-       <input type="radio" name="gametype" value="HARD"><label>HARD</label><br>
-       <input type="submit" value="NEW GAME">
-       </form>
+       <input type="button" onclick="window.location.href='/new_game_easy'" value="NEW GAME - EASY">
+       <input type="button" onclick="window.location.href='/new_game_hard'" value="NEW GAME - HARD">
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
