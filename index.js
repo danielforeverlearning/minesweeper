@@ -231,7 +231,7 @@ express()
   })
   .post('/new_game', (req, res) => {
 	  InitializeMap();
-	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:-1, lastcol:-1, clicktype:"Flag" });
+	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
   }) //mypost
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
@@ -261,6 +261,7 @@ express()
 		  //console.log("splitarray[1] = " + splitarray[1]);
 		  //console.log("splitarray[2] = " + splitarray[2]);
 
+		  var endgame = "";
 		  if (clicktype==="Flag")
 		  {
 			  if (map_status[splitarray[1]][splitarray[2]] === "flagged")
@@ -276,13 +277,35 @@ express()
 				  opened_flagged_count++;
 			  }
 		  }
-		  else
+		  else  //Dig
 		  {
 			  map_status[splitarray[1]][splitarray[2]] = "open";
 			  opened_flagged_count++;
+			  if (map[splitarray[1]][splitarray[2]]==="M")
+				  endgame="LOSE";
+		  }
+
+		  //check win condition
+		  if (endgame !== "LOSE" && opened_flagged_count==total_cells)
+		  {
+			  for (rr=0; rr < rows; rr++)
+			  {
+				  for (cc=0; cc < cols; cc++)
+				  {
+					  if (map_status[rr][cc] === "flagged" && map[rr][cc] !== "M")
+					  {
+						   rr=rows;
+						   cc=cols;
+						   endgame="CONTINUE";
+					  }
+				  }
+			  }
+
+			  if (endgame !== "CONTINUE")
+				  endgame = "WIN";
 		  }
 		  
-		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, lastrow:splitarray[1], lastcol:splitarray[2], clicktype:clicktype, opened_flagged_count:opened_flagged_count, total_cells:total_cells, clicktype:clicktype });
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:clicktype, endgame:endgame });
       })//form.parse
   })
   .listen(PORT, () => console.log(`Listening to ${ PORT }`))
