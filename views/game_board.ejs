@@ -55,7 +55,7 @@
 <% } else { %>
        <form action="/game_click" method="post" enctype="multipart/form-data">
 <% if (clicktype==="Dig") { %>
-       <input type="radio" name="click_type" value="Dig"  checked><label>Dig</label><br>
+       <input type="radio" name="click_type" value="Dig"  checked><label class="shovel"></label><br>
        <input type="radio" name="click_type" value="Flag"><label>Flag</label><br>
 <% } else { %>
        <input type="radio" name="click_type" value="Dig"><label>Dig</label><br>
