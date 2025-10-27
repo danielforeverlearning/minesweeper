@@ -190,8 +190,8 @@ function InitializeMap(mine_percent)
 	The maximum value for a 32-bit unsigned integer (uint32) 
 	in JavaScript is (2^{32}-1), which equals 4,294,967,295.
 	*************************************************************************************************/
-	var total_mines = total_cells * mine_percent;
-	var mine_random_num = 4294967295 * mine_percent;
+	var total_mines = total_cells * (mine_percent / 100);
+	var mine_random_num = 4294967295 * (mine_percent / 100);
 
     console.log("total_mines = " + total_mines + "  " + typeof total_mines);
 	console.log("mine_random_num = " + mine_random_num + "  " + typeof mine_random_num);
