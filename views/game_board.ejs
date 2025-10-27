@@ -54,13 +54,15 @@
        <% } %>
 <% } else { %>
        <form action="/game_click" method="post" enctype="multipart/form-data">
+       <span>
 <% if (clicktype==="Dig") { %>
-       <input type="radio" name="click_type" value="Dig"  checked><img src="/css/icons8-minecraft-shovel-100.png" alt="Dig"><br>
-       <input type="radio" name="click_type" value="Flag"><img src='/css/icons8-flag-filled-96.png' alt="Flag"><br>
+       <input type="radio" name="click_type" value="Dig"  checked><img src="/css/icons8-minecraft-shovel-100.png" alt="Dig">
+       <input type="radio" name="click_type" value="Flag"><img src='/css/icons8-flag-filled-96.png' alt="Flag">
 <% } else { %>
-       <input type="radio" name="click_type" value="Dig"><img src="/css/icons8-minecraft-shovel-100.png" alt="Dig"><br>
-       <input type="radio" name="click_type" value="Flag" checked><img src='/css/icons8-flag-filled-96.png' alt="Flag"><br>
+       <input type="radio" name="click_type" value="Dig"><img src="/css/icons8-minecraft-shovel-100.png" alt="Dig">
+       <input type="radio" name="click_type" value="Flag" checked><img src='/css/icons8-flag-filled-96.png' alt="Flag">
 <% } %>
+       </span>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
