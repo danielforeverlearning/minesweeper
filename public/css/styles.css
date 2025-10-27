@@ -42,3 +42,11 @@ p {
   width: 3%;
   height: 3%;
 }
+
+.mine {
+  background-image: url('/css/icons8-minecraft-shovel-100.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: contain;
+}
+
