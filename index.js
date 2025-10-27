@@ -236,6 +236,7 @@ express()
 	  res.render("home");  
   })
   .post('/new_game', (req, res) => {
+	  var gametype = "";
 	  var form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
           if (err)
@@ -244,7 +245,7 @@ express()
               return;
           }
           
-		  const gametype = fields.gametype[0];
+		  gametype = fields.gametype[0];
 		  console.log("gametype = " + gametype);
 	  })
 	  InitializeMap(gametype);
