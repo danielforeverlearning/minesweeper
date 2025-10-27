@@ -6,8 +6,9 @@
 <body>
 <h1>Minesweeper</h1>
 <form action="/new_game" method="post" enctype="multipart/form-data">
-<input type="submit" name="gametype" value="EASY">
-<input type="submit" name="gametype" value="HARD">
+<input type="radio" name="gametype" value="EASY"  checked><label>EASY</label><br>
+<input type="radio" name="gametype" value="HARD"><label>HARD</label><br>
+<input type="submit" value="NEW GAME">
 </form>
 </body>
 </html>
