@@ -192,6 +192,11 @@ function InitializeMap(mine_percent)
 	*************************************************************************************************/
 	var total_mines = total_cells * mine_percent;
 	var mine_random_num = 4294967295 * mine_percent;
+
+    console.log("total_mines = " + total_mines + "  " + typeof total_mines);
+	console.log("mine_random_num = " + mine_random_num + "  " + typeof mine_random_num);
+
+	/***************
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
 	for (let rr = 0; rr < rows; rr++)
@@ -212,8 +217,11 @@ function InitializeMap(mine_percent)
 				map[rr][cc] = "E";
 		}
 	}
-	
-	MapAnotherPass(mine_count, total_mines, mine_random_num);
+
+	if (mine_count < total_mines)
+		MapAnotherPass(mine_count, total_mines, mine_random_num);
+	else
+		console.log("InitializeMap mine_count = " + mine_count);
 	MapPutNumbers();
 }//InitializeMap
 
