@@ -244,7 +244,7 @@ express()
               res.send("route post new_game form.parse ERROR = " + err);
               return;
           }
-          
+          console.log("fields = " + JSON.stringify(fields));
 		  gametype = fields.gametype[0];
 		  console.log("gametype = " + gametype);
 	  })
