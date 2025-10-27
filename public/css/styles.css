@@ -43,13 +43,7 @@ p {
   height: 3%;
 }
 
-/*hide default radio */
-input[type="radio"] {
-        -webkit-appearance: none; /* For Safari/Chrome */
-        -moz-appearance: none;    /* For Firefox */
-        appearance: none;
-        /* You might also want to set width/height to 0 or use position: absolute and opacity: 0 */
-}
+
 
 /* CHECKED STYLES */
 input[type=radio]:checked + img {
