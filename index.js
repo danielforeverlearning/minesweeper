@@ -230,6 +230,21 @@ express()
 	  res.render("home");  
   })
   .post('/new_game', (req, res) => {
+	  var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+          if (err)
+          {
+              res.send("route post new_game form.parse ERROR = " + err);
+              return;
+          }
+          const keys_obj = Object.keys(fields);
+		  //const keys = JSON.stringify(keys_obj);
+		  //console.log("keys = " + keys);
+		  //console.log("typeof keys = " + typeof keys);
+		  
+		  const clicktype = fields.click_type[0];
+		  console.log("clicktype = " + clicktype);
+	  })
 	  InitializeMap();
 	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
   }) //mypost
