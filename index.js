@@ -233,13 +233,23 @@ express()
   .get('/', (req, res) => {
 	  res.render("home");  
   })
-  .get('/new_game_easy', (req, res) => {
-	  InitializeMap("EASY");
-	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
-  })
-  .get('/new_game_hard', (req, res) => {
-	  InitializeMap("HARD");
-	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
+  
+  .post('/new_game', (req, res) => {
+	  var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+          if (err)
+          {
+              res.send("route post game_click form.parse ERROR = " + err);
+              return;
+          }
+          const keys_obj = Object.keys(fields);
+		  const keys = JSON.stringify(keys_obj);
+		  console.log("keys = " + keys);
+		  console.log("typeof keys = " + typeof keys);
+	  })//form.parse
+	  
+	  //InitializeMap("HARD");
+	  //res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
   }) 
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
