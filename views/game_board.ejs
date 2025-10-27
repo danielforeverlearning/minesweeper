@@ -6,7 +6,7 @@
 <body>
 
 <h1>Minesweeper</h1>
-<% if (lastrow != -1 && lastcol != -1 && map[lastrow][lastcol]==="M" && clicktype==="Dig") { %>
+<% if (endgame==="LOSE") { %>
        <p>BOOM!.....YOU LOSE :(</p>
        <form action="/new_game" method="post" enctype="multipart/form-data">
        <input type="submit" value="NEW GAME">
@@ -29,7 +29,7 @@
               </span>
               <br/>
        <% } %>
-<% } else if (lastrow != -1 && lastcol != -1 && opened_flagged_count==total_cells) { %>
+<% } else if (endgame==="WIN") { %>
        <p>YAY!.....YOU WIN :)</p>
        <form action="/new_game" method="post" enctype="multipart/form-data">
        <input type="submit" value="NEW GAME">
