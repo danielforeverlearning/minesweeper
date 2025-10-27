@@ -235,22 +235,14 @@ express()
   .get('/', (req, res) => {
 	  res.render("home");  
   })
-  .post('/new_game', (req, res) => {
-	  var gametype = "";
-	  var form = new formidable.IncomingForm();
-      form.parse(req, function (err, fields, files) {
-          if (err)
-          {
-              res.send("route post new_game form.parse ERROR = " + err);
-              return;
-          }
-          console.log("fields = " + JSON.stringify(fields));
-		  gametype = fields.gametype[0];
-		  console.log("gametype = " + gametype);
-	  })
-	  InitializeMap(gametype);
+  .get('/new_game_easy', (req, res) => {
+	  InitializeMap("EASY");
 	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
-  }) //mypost
+  })
+  .get('/new_game_hard', (req, res) => {
+	  InitializeMap("HARD");
+	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
+  }) 
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
