@@ -34,4 +34,11 @@ p {
   height: 3%;
 }
 
-
+.mine {
+  background-image: url('/css/icons8-explosive-60.png');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: contain;
+  width: 3%;
+  height: 3%;
+}
