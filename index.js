@@ -14,9 +14,8 @@ const PORT         = process.env.PORT || 666;
 const rows = 20;
 const cols = 20;
 const total_cells = rows * cols;
-const mine_percent = 0.4;
-const total_mines = total_cells * mine_percent;
-const mine_random_num = 4294967295 * mine_percent;
+const hard_mine_percent = 0.4;
+const easy_mine_percent = 0.2;
 const map_status = [];
 const map = [];
 var opened_flagged_count = 0;
@@ -154,7 +153,7 @@ function MapPutNumbers()
 	}
 }//MapPutNumbers
 
-function MapAnotherPass(temp)
+function MapAnotherPass(temp, total_mines, mine_random_num)
 {
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = temp;
@@ -182,7 +181,7 @@ function MapAnotherPass(temp)
 	}
 }//MapAnotherPass
 
-function InitializeMap()
+function InitializeMap(gametype)
 {
 	/**************************************************************************************************
 	Secure random numbers:
@@ -194,7 +193,14 @@ function InitializeMap()
 	The maximum value for a 32-bit unsigned integer (uint32) 
 	in JavaScript is (2^{32}-1), which equals 4,294,967,295.
 	*************************************************************************************************/
-	//console.log("mine_random_num = " + mine_random_num);
+	var total_mines = total_cells * easy_mine_percent;
+	var mine_random_num = 4294967295 * easy_mine_percent;
+	if (gametype==="HARD")
+	{
+		total_mines = total_cells * hard_mine_percent;
+		mine_random_num = 4294967295 * hard_mine_percent;
+	}
+	
 	opened_flagged_count = 0;
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
@@ -217,7 +223,7 @@ function InitializeMap()
 		}
 	}
 	console.log("mine_count = " + mine_count);
-	MapAnotherPass(mine_count);
+	MapAnotherPass(mine_count, total_mines, mine_random_num);
 	MapPutNumbers();
 }//InitializeMap
 
@@ -237,15 +243,11 @@ express()
               res.send("route post new_game form.parse ERROR = " + err);
               return;
           }
-          const keys_obj = Object.keys(fields);
-		  //const keys = JSON.stringify(keys_obj);
-		  //console.log("keys = " + keys);
-		  //console.log("typeof keys = " + typeof keys);
-		  
-		  const clicktype = fields.click_type[0];
-		  console.log("clicktype = " + clicktype);
+          
+		  const gametype = fields.gametype[0];
+		  console.log("gametype = " + gametype);
 	  })
-	  InitializeMap();
+	  InitializeMap(gametype);
 	  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
   }) //mypost
   .post('/game_click', (req, res) => {
