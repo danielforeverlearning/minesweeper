@@ -43,4 +43,8 @@ p {
   height: 3%;
 }
 
+input[type="radio"]:checked  {
+  border: 2px solid black;
+}
+
 
