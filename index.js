@@ -14,8 +14,6 @@ const PORT         = process.env.PORT || 666;
 const rows = 20;
 const cols = 20;
 const total_cells = rows * cols;
-const hard_mine_percent = 0.4;
-const easy_mine_percent = 0.2;
 const map_status = [];
 const map = [];
 
@@ -180,7 +178,7 @@ function MapAnotherPass(temp, total_mines, mine_random_num)
 	}
 }//MapAnotherPass
 
-function InitializeMap(gametype)
+function InitializeMap(mine_percent)
 {
 	/**************************************************************************************************
 	Secure random numbers:
@@ -192,14 +190,8 @@ function InitializeMap(gametype)
 	The maximum value for a 32-bit unsigned integer (uint32) 
 	in JavaScript is (2^{32}-1), which equals 4,294,967,295.
 	*************************************************************************************************/
-	var total_mines = total_cells * easy_mine_percent;
-	var mine_random_num = 4294967295 * easy_mine_percent;
-	if (gametype==="HARD")
-	{
-		total_mines = total_cells * hard_mine_percent;
-		mine_random_num = 4294967295 * hard_mine_percent;
-	}
-	
+	var total_mines = total_cells * mine_percent;
+	var mine_random_num = 4294967295 * mine_percent;
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
 	for (let rr = 0; rr < rows; rr++)
@@ -220,7 +212,7 @@ function InitializeMap(gametype)
 				map[rr][cc] = "E";
 		}
 	}
-	console.log("mine_count = " + mine_count);
+	
 	MapAnotherPass(mine_count, total_mines, mine_random_num);
 	MapPutNumbers();
 }//InitializeMap
@@ -234,7 +226,7 @@ express()
 	  res.render("home");  
   })
   
-  .post('/new_game', (req, res) => {
+  .post('/newgame', (req, res) => {
 	  var form = new formidable.IncomingForm();
       form.parse(req, function (err, fields, files) {
           if (err)
@@ -242,14 +234,16 @@ express()
               res.send("route post game_click form.parse ERROR = " + err);
               return;
           }
-          const keys_obj = Object.keys(fields);
-		  const keys = JSON.stringify(keys_obj);
-		  console.log("keys = " + keys);
-		  console.log("typeof keys = " + typeof keys);
+          //const keys_obj = Object.keys(fields);
+		  //const keys = JSON.stringify(keys_obj);
+		  //console.log("keys = " + keys);
+		  //console.log("typeof keys = " + typeof keys);
+		  const mine_percent = fields.click_type[0];
+		  console.log("mine_percent = " + mine_percent + "  " + typeof mine_percent);
+
+		  InitializeMap(mine_percent);
+		  res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
 	  })//form.parse
-	  
-	  //InitializeMap("HARD");
-	  //res.render("game_board", { rows:rows, cols:cols, map_status:map_status, map:map, clicktype:"Flag", endgame:"CONTINUE" });
   }) 
   .post('/game_click', (req, res) => {
 	  var form = new formidable.IncomingForm();
