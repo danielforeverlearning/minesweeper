@@ -18,7 +18,6 @@ const hard_mine_percent = 0.4;
 const easy_mine_percent = 0.2;
 const map_status = [];
 const map = [];
-var opened_flagged_count = 0;
 
 function PutNumber(rr,cc)
 {
@@ -201,7 +200,6 @@ function InitializeMap(gametype)
 		mine_random_num = 4294967295 * hard_mine_percent;
 	}
 	
-	opened_flagged_count = 0;
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
 	for (let rr = 0; rr < rows; rr++)
@@ -278,31 +276,34 @@ express()
 			  {
 				  //console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to closed");
 				  map_status[splitarray[1]][splitarray[2]] = "closed";
-				  opened_flagged_count--;
 			  }
 			  else
 			  {
 				  //console.log("change map_status " + splitarray[1] + " " + splitarray[2] + "to flagged");
 				  map_status[splitarray[1]][splitarray[2]] = "flagged";
-				  opened_flagged_count++;
 			  }
 		  }
 		  else  //Dig
 		  {
 			  map_status[splitarray[1]][splitarray[2]] = "open";
-			  opened_flagged_count++;
 			  if (map[splitarray[1]][splitarray[2]]==="M")
 				  endgame="LOSE";
 		  }
 
 		  //check win condition
-		  if (endgame !== "LOSE" && opened_flagged_count==total_cells)
+		  if (endgame !== "LOSE")
 		  {
 			  for (rr=0; rr < rows; rr++)
 			  {
 				  for (cc=0; cc < cols; cc++)
 				  {
-					  if (map_status[rr][cc] === "flagged" && map[rr][cc] !== "M")
+					  if (map_status[rr][cc] === "closed")
+					  {
+						   rr=rows;
+						   cc=cols;
+						   endgame="CONTINUE";
+					  }
+					  else if (map_status[rr][cc] === "flagged" && map[rr][cc] !== "M")
 					  {
 						   rr=rows;
 						   cc=cols;
