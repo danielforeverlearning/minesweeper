@@ -238,7 +238,7 @@ express()
 		  //const keys = JSON.stringify(keys_obj);
 		  //console.log("keys = " + keys);
 		  //console.log("typeof keys = " + typeof keys);
-		  const mine_percent = fields.click_type[0];
+		  const mine_percent = fields.minepercentagename[0];
 		  console.log("mine_percent = " + mine_percent + "  " + typeof mine_percent);
 
 		  InitializeMap(mine_percent);
