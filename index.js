@@ -241,7 +241,7 @@ express()
       form.parse(req, function (err, fields, files) {
           if (err)
           {
-              res.send("route post new_game form.parse ERROR = " + err);
+              console.log("route post new_game form.parse ERROR = " + err);
               return;
           }
           
