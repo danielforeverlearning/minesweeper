@@ -9,8 +9,9 @@
 <% if (endgame==="LOSE") { %>
        <p>BOOM!.....YOU LOSE :(</p>
        <form action="/new_game" method="post" enctype="multipart/form-data">
-       <input type="submit" name="gametype" value="EASY">
-       <input type="submit" name="gametype" value="HARD">
+       <input type="radio" name="gametype" value="EASY"  checked><label>EASY</label><br>
+       <input type="radio" name="gametype" value="HARD"><label>HARD</label><br>
+       <input type="submit" value="NEW GAME">
        </form>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
@@ -33,8 +34,9 @@
 <% } else if (endgame==="WIN") { %>
        <p>YAY!.....YOU WIN :)</p>
        <form action="/new_game" method="post" enctype="multipart/form-data">
-       <input type="submit" name="gametype" value="EASY">
-       <input type="submit" name="gametype" value="HARD">
+       <input type="radio" name="gametype" value="EASY"  checked><label>EASY</label><br>
+       <input type="radio" name="gametype" value="HARD"><label>HARD</label><br>
+       <input type="submit" value="NEW GAME">
        </form>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
