@@ -15,7 +15,11 @@
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
        <%          if (map_status[rr][cc]==="open") { %>
-                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               if (map[rr][cc]==="M") { %>
+                             <input type="button" class="mine">
+       <%               } else { %>
+                             <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               }  %>
        <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="button" class="game_button" value="">
        <%          } else { %>
@@ -34,7 +38,11 @@
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
        <%          if (map_status[rr][cc]==="open") { %>
-                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               if (map[rr][cc]==="M") { %>
+                             <input type="button" class="mine">
+       <%               } else { %>
+                             <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               }  %>
        <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="button" class="game_button" value="">
        <%          } else { %>
@@ -57,7 +65,11 @@
               <span>
        <%     for (let cc = 0; cc < cols; cc++) { %>
        <%          if (map_status[rr][cc]==="open") { %>
-                        <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               if (map[rr][cc]==="M") { %>
+                             <input type="button" class="mine">
+       <%               } else { %>
+                             <input type="button" class="opened" value=<%= map[rr][cc] %>>
+       <%               }  %>
        <%          } else if (map_status[rr][cc]==="closed") { %>
                         <input type="submit" name=button_<%= rr %>_<%= cc %>  class="game_button" value="">
        <%          } else { %>
