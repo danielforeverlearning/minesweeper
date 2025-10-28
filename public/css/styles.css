@@ -11,6 +11,7 @@ h1 {
 p {
   font-family: verdana;
   font-size: 20px;
+  text-align: center;
 }
 
 .game_button {
