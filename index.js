@@ -196,7 +196,6 @@ function InitializeMap(mine_percent)
     console.log("total_mines = " + total_mines + "  " + typeof total_mines);
 	console.log("mine_random_num = " + mine_random_num + "  " + typeof mine_random_num);
 
-	/***************
 	const randomBuffer = new Uint32Array(1);
 	var mine_count = 0;
 	for (let rr = 0; rr < rows; rr++)
@@ -223,7 +222,6 @@ function InitializeMap(mine_percent)
 	else
 		console.log("InitializeMap mine_count = " + mine_count);
 	MapPutNumbers();
-	**********************/
 }//InitializeMap
 
 
