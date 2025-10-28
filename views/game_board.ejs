@@ -3,9 +3,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
-<body>
 
+<body>
 <h1>Minesweeper</h1>
+<div class="center-div">
 <% if (endgame==="LOSE") { %>
        <p>BOOM!.....YOU LOSE :(</p>
        <form action="/newgame" method="post" enctype="multipart/form-data">
@@ -94,6 +95,7 @@
        <% } %>
        </form>
 <% } %>
+</div>
 </body>
 </html>
 
