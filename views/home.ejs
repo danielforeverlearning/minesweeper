@@ -5,6 +5,7 @@
 </head>
 <body>
 <h1>Minesweeper</h1>
+<div class="center-div">
 <form action="/newgame" method="post" enctype="multipart/form-data">
     <label for="minepercentageid">Mine Percentage:</label>
     <input type="range" id="minepercentageid" name="minepercentagename" min="10" max="40" value="25" oninput="this.nextElementSibling.value=this.value">
@@ -12,5 +13,6 @@
     <br>
     <input type="submit" value="NEW GAME">
 </form>
+</div>
 </body>
 </html>
