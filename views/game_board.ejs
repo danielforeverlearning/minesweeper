@@ -8,8 +8,13 @@
 <h1>Minesweeper</h1>
 <% if (endgame==="LOSE") { %>
        <p>BOOM!.....YOU LOSE :(</p>
-       <input type="button" onclick="window.location.href='/new_game_easy'" value="NEW GAME - EASY">
-       <input type="button" onclick="window.location.href='/new_game_hard'" value="NEW GAME - HARD">
+       <form action="/newgame" method="post" enctype="multipart/form-data">
+              <label for="minepercentageid">Mine Percentage:</label>
+              <input type="range" id="minepercentageid" name="minepercentagename" min="10" max="40" value="25" oninput="this.nextElementSibling.value=this.value">
+              <output for="minepercentageid">25</output>%
+              <br>
+              <input type="submit" value="NEW GAME">
+       </form>
        <br>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
@@ -31,8 +36,13 @@
        <% } %>
 <% } else if (endgame==="WIN") { %>
        <p>YAY!.....YOU WIN :)</p>
-       <input type="button" onclick="window.location.href='/new_game_easy'" value="NEW GAME - EASY">
-       <input type="button" onclick="window.location.href='/new_game_hard'" value="NEW GAME - HARD">
+       <form action="/newgame" method="post" enctype="multipart/form-data">
+              <label for="minepercentageid">Mine Percentage:</label>
+              <input type="range" id="minepercentageid" name="minepercentagename" min="10" max="40" value="25" oninput="this.nextElementSibling.value=this.value">
+              <output for="minepercentageid">25</output>%
+              <br>
+              <input type="submit" value="NEW GAME">
+       </form>
        <br>
        <% for (let rr = 0; rr < rows; rr++) { %>
               <span>
