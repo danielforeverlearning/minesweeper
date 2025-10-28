@@ -8,12 +8,6 @@ h1 {
   text-align: center;
 }
 
-p {
-  font-family: verdana;
-  font-size: 20px;
-  text-align: center;
-}
-
 .game_button {
   background-color: blue;
   width: 3%;
@@ -44,11 +38,13 @@ p {
   height: 3%;
 }
 
-
-
 /* CHECKED STYLES */
 input[type=radio]:checked + img {
   border: 2px solid #f00;
+}
+
+.center-div {
+  text-align: center;
 }
 
 
